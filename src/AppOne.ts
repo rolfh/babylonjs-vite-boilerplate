@@ -1,4 +1,3 @@
-// import * as BABYLON from "babylonjs";
 import {
 	MeshBuilder,
 	StandardMaterial,
@@ -7,15 +6,13 @@ import {
 	ArcRotateCamera,
 	Vector3,
 	HemisphericLight,
-	SceneLoader,
+	ImportMeshAsync,
 	Color3,
 	Color4,
 	Texture,
-} from 'babylonjs'
-// import {SceneLoader} from 'babylonjs-loaders'
-import 'babylonjs-loaders'
-
-// import {ImportMeshAsync} from "babylonjs/Meshes/meshImporters/importMeshAsync";
+} from '@babylonjs/core'
+import '@babylonjs/loaders/glTF'
+import '@babylonjs/inspector'
 
 export class AppOne {
 	engine: Engine
@@ -74,7 +71,7 @@ function createScene(engine: Engine, canvas: HTMLCanvasElement) {
 	ground.material = groundMaterial
 	groundMaterial.bumpTexture = new Texture('./normal.jpg', scene)
 
-	SceneLoader.ImportMeshAsync('', 'models/', 'head1.glb', scene).then((result: any) => {
+	ImportMeshAsync('models/head1.glb', scene).then((result: any) => {
 		console.log('Model loaded:', result.meshes)
 		result.meshes[0].position = new Vector3(2, 0, 0)
 	})

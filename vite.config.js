@@ -1,11 +1,7 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
-    return {
-        resolve: {
-            alias: {
-                'babylonjs': mode === 'development' ? 'babylonjs/babylon.max' : 'babylonjs'
-            }
-        }
-    };
-});
+	return {
+		// Modern BabylonJS ES6 packages don't need the legacy alias
+	}
+})
